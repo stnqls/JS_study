@@ -1,29 +1,107 @@
-const pi = 3.14159265358979
-console.log(pi)
+const numbers = [1,2,3,4]
+const fruits =['Apple', 'Banana', 'Cherry']
 
-const str = pi.toFixed(2) //소수점 이하 자릿수
-console.log(str)
-console.log(typeof str)
+console.log(numbers[1]) //2
+console.log(fruits[2]) //Cherry
 
-const integer = parseInt(str) //문자 데이터를 정수로 변환
-const float = parseFloat(str) //문자 데이터를 실수로 변환
-console.log(integer)
-console.log(float)
-console.log(typeof integer, typeof float)
+//length
+
+console.log(numbers.length)
+console.log(fruits.length)
+console.log([1,2].length)
+console.log([].length)
+
+//concat
+
+console.log(numbers.concat(fruits)) //원본에는 영향 x
+
+//forEach
+
+fruits.forEach(function (element, index, array) {
+  console.log(element,index,array)
+})
+
+//map
+
+const a = fruits.forEach((fruit,index) => {
+  console.log(`${fruit}-${index}`)
+})
+console.log(a)
+
+const b = fruits.map(function (fruit, i){ //반환된 값을 모아서 새로운 배열로 만들어 준다.
+  return {
+    id: i,
+    name: fruit
+  }
+})
+console.log(b)
+
+//화살표 함수로 표현
+// const b = fruits.map((fruit, i)=>({
+//   id: i,
+//   name: fruit
+// }))
+// console.log(b)
 
 
-// Math
+//filter
 
-console.log('abs: ', Math.abs(-12))
+const a2 = numbers.map(number => {
+  return number < 3
+})
+console.log(a2)
 
-console.log('min: ', Math.min(2,8))
+const b2 = numbers.filter(number => {
+  return number < 3
+})
+console.log(b2)
+console.log(numbers)
 
-console.log('max: ', Math.max(2,8))
 
-console.log('ceil: ', Math.ceil(3.14)) //정수단위로 올림
+//find(), findIndex
 
-console.log('floor: ', Math.floor(3.14))
+const a3 = fruits.find(fruit => {
+  return /^B/.test(fruit)
+})
+console.log(a3)
 
-console.log('round: ', Math.round(3.14)) //반올림
+const a4 = fruits.findIndex(fruit => {
+  return /^C/.test(fruit)
+})
+console.log(a4)
 
-console.log('random: ', Math.random()) 
+
+//includes
+
+const a5 = numbers.includes(3)
+console.log(a5)
+
+const a6 = fruits.includes('HEROPY')
+console.log(a6);
+
+//push , unshift 원본 수정됨 주의
+
+numbers.push(5)//뒤에 데이터 추가
+console.log(numbers)
+
+numbers.unshift(0) //앞에 데이터 추가
+console.log(numbers)
+
+//reverse 원본 수정됨 주의
+
+numbers.reverse()
+fruits.reverse()
+
+console.log(numbers)
+console.log(fruits)
+
+
+//splice() 원본 수정됨 주의
+
+numbers.reverse();fruits.reverse();
+
+numbers.splice(2,1, 999)
+console.log(numbers)
+
+fruits.splice(2,0,'Orange')
+console.log(fruits)
