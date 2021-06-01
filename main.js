@@ -1,29 +1,17 @@
 import _, { uniqBy } from 'lodash'  //From `node_modules`
 
-const usersA = [
-  { 
-    userId: '1', 
-    name : 'HEROPY'
-  },
-  {
-    userId: '2', 
-    name : 'Neo' 
-  }
+const users = [
+  {userId : '1', name : 'HEROPY'},
+  {userId : '2', name : 'Neo'},
+  {userId : '3', name : 'Amy'},
+  {userId : '4', name : 'Evan'},
+  {userId : '5', name : 'Lewis'}
 ]
 
-const usersB = [
-  { 
-    userId: '1', 
-    name : 'HEROPY'
-  },
-  {
-    userId: '3', 
-    name : 'Amy' 
-  }
-]
-const usersC = usersA.concat(usersB)
-console.log('concat', usersC)
-console.log('uniqBy', _.uniqBy(usersC, 'userId')) //userId로 중복 제거
+const foundUser = _.find(users,{name : 'Amy'})
+const foundUserIndex = _.findIndex(users, {name : 'Amy'})
+console.log(foundUser)
+console.log(foundUserIndex)
 
-const usersD = _.unionBy(usersA, usersB, 'userId') // 여러개의 배열을 합칠때 userId로 중복을 제거하여 합친다.
-console.log('unionBy', usersD)
+_.remove(users, {name:'HEROPY'})
+console.log(users)
