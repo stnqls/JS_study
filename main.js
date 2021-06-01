@@ -1,28 +1,14 @@
-//타이머 함수
-// setTimeout(함수, 시간) : 일정시간 후 함수 실행
-// setInterval(함수, 시간) : 시간 간격마다 함수 실행
-//clearTimeout(): 설정된 Timeout 함수를 종료
-//clearInterval(): 설정된 Interval 함수를 종료
+//콜백 Callback
+//함수의 인수로 사용되는 함수
 
-setTimeout(function(){
-  console.log('Heropy!')
-}, 3000)
+//setTimeout(함수,시간) 에서 사용된 함수를 콜백이라고 부른다.
 
-const timer = setTimeout(()=>{
-  console.log('heropy!')
-},3000);
-
-const h1El = document.querySelector('h1')
-h1El.addEventListener('click', () => {
-  clearTimeout(timer)
-});
-
-
-const timerInterval = setInterval(()=>{
-  console.log('heropy!')
-},3000);
-
-const h1ElInterval = document.querySelector('h1')
-h1El.addEventListener('click', () => {
-  clearInterval(timerInterval)
-});
+function timeout(cb){
+  setTimeout(() => {
+    console.log('Heropy!')
+    cb()
+  },3000)
+}
+timeout(() => {
+  console.log('Done!')
+})
