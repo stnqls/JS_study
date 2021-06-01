@@ -1,19 +1,11 @@
-//즉시 실행 함수 IIFE
+//호이스팅 Hoisting
+//함수 선언부가 유효범위 최상단으로 끌어 올려지는 현상
 
-const a = 7
-function double(){
+const a =7
+
+
+double()
+
+function double (){
   console.log(a * 2)
 }
-double();
-
-//첫번째 방법
-(
-  function () {
-    console.log(a * 2)
-  })();
-// 두번째 방법  
-(
-  function () {
-    console.log(a * 2)
-  }());
-
