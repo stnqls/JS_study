@@ -1,14 +1,45 @@
-//콜백 Callback
-//함수의 인수로 사용되는 함수
-
-//setTimeout(함수,시간) 에서 사용된 함수를 콜백이라고 부른다.
-
-function timeout(cb){
-  setTimeout(() => {
-    console.log('Heropy!')
-    cb()
-  },3000)
+const heropy = {
+  firstName : 'Heropy',
+  lastName:'Park',
+  getFullName: function (){
+    return `${this.firstName} ${this.lastName}`
+  }
 }
-timeout(() => {
-  console.log('Done!')
-})
+console.log(heropy.getFullName())
+
+const amy ={
+  firstName: 'Amy',
+  lastName : 'Clarke',
+  getFullName: function (){
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+console.log(amy.getFullName())
+
+const neo ={
+  firstName: 'Neo',
+  lastName : 'Smith',
+  getFullName: function (){
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+console.log(neo.getFullName())
+
+
+
+// 클래스
+
+function User(first, last) {
+  this.firstName = first
+  this.lastName = last
+}
+
+User.prototype.getFullName = function (){
+  return `${this.firstName} ${this.lastName}`
+}
+
+const subin = new User('subin','seon') //생성자 함수
+const youngbin = new User('youngbin','seon')
+
+console.log(subin.getFullName())
+console.log(youngbin)
