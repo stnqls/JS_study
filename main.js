@@ -1,30 +1,27 @@
-//ES6 Classes
-
-const heropy = {
-  name: 'Heropy',
-  normal(){ // = normal : function (){}, funcion생략 가능.
-    console.log(this.name)
-  },
-  arrow: () => {
-    console.log(this.name)
+class Vehicle {
+  constructor(name, wheel){
+    this.name = name
+    this.wheel = wheel
   }
 }
+const myVehicle = new Vehicle('운송수단',2)
+console.log(myVehicle)
 
-heropy.normal()
-heropy.arrow()
-
-
-
-class User {
-  constructor(first, last){
-    this.firstName = first
-    this.lastName = last
-  }
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`
+class Bicycle extends Vehicle {
+  constructor(name, wheel){
+    super(name,wheel)
   }
 }
+const MyBicycle = new Bicycle('자전거',2)
+console.log(MyBicycle)
 
-const heropys = new User('Heropy', 'Park')
-
-console.log(heropys)
+class Car extends Vehicle {
+  constructor(name, wheel, license) {
+    super(name, wheel)
+    this.license = license
+  }
+}
+const MyCar = new Car('자동차',4,true)
+const daughterCar = new Car ('포르쉐',4, false)
+console.log(MyCar)
+console.log(daughterCar)
