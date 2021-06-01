@@ -1,16 +1,23 @@
-//전개 연산자
+//데이터 불변성
+// 원시데이터 : String, Number, Boolean, undefined, null
+let a = 1
+let b = 4
+console.log(a, b, a === b)
+b = a
+console.log(a, b, a === b)
+a = 7
+console.log(a, b, a === b)
+let c = 1
+console.log(b, c, b === c)
 
-const fruits = ['Apple', 'Banana', 'Cherry','Orange']
-console.log(fruits)
-console.log(...fruits) //String 형태로 출력된다. = console.log('Apple','Banana','Cherry')
-
-function toObject(a,b, ...c) {
-  return {
-    a: a, 
-    b: b, 
-    c: c
-  }
-}
-console.log(toObject(...fruits)) //= console.log(toObject(fruits[0], fruits[1], fruits[2]))
-
-// = const toObject= (a,b, ...c)=> {a,b,c}
+//참조형 데이터 : Object, Array ,Function
+let x = {k : 1}
+let y = {k : 1}
+console.log(x, y, x === y)
+x.k = 7
+y = x
+console.log(x, y, x === y)
+let z = y
+console.log(x, y, z, x === z)
+x.k = 9
+console.log(x, y, z, x === z)
