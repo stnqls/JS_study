@@ -1,32 +1,18 @@
-const userAge ={
-  name : 'Heropy',
-  age: 85
-}
-
-const userEmail = {
-  name :'Heropy',
-  email : 'thesecon@gmail.com'
-}
-
-const target = Object.assign({},userAge, userEmail) // 맨 앞에 빈 객체 데이터 {}를 입력할 경우 합쳐진 데이터가 새로운객체데이터를 만든다.
-console.log(target)
-console.log(userAge)
-console.log(target === userAge) //참조형 : 객체, 배열, 함수
-
-const a = {k : 123}
-const b = {k : 123}
-console.log(a === b) //다른 메모리를 참조 하고 있다.
-
+//구조 분해 할당 == 비구조화 할당
 
 const user = {
-  name : 'SUBIN',
-  age: 80,
-  email : 'tn9612@naver.com'
+  name : 'Heropy',
+  age : 85,
+  email : 'thesecon@gmail.com',
+  address : 'USA'
 }
-const keys = Object.keys(user)
-console.log(keys)
+const {name:heropy, age, email, address = 'Korea'} = user
 
-console.log(user['email'])
+console.log(`사용자의 이름은 ${heropy} 입니다.`)
+console.log(`${heropy}의 나이은 ${age} 입니다.`)
+console.log(`${heropy}의 이메일 주소는 ${email} 입니다.`)
+console.log(address)
 
-const values = keys.map(key => user[key])
-console.log(values)
+const fruits = ['Apple', 'Banana', 'Cherry']
+const [a,b,c,d] = fruits
+console.log(a,b,c,d)
