@@ -1,10 +1,8 @@
-//this
-//일반 함수는 호출 위치에 따라 this정의
-//화살표 함수는 자신이 선언된 함수 범위에서 this정의
+//ES6 Classes
 
 const heropy = {
   name: 'Heropy',
-  normal: function(){
+  normal(){ // = normal : function (){}, funcion생략 가능.
     console.log(this.name)
   },
   arrow: () => {
@@ -15,41 +13,18 @@ const heropy = {
 heropy.normal()
 heropy.arrow()
 
-const amy = {
-  name : 'Amy',
-  normal : heropy.normal,
-  arrow : heropy.arrow
-}
-amy.normal()
-amy.arrow()
 
 
-
-
-function User(name) {
-  this.name = name
-}
-User.prototype.normal = function () {
-  console.log(this.name)
-}
-User.prototype.arrow = () => {
-  console.log(this.name)
-}
-
-const Heropy = new User('Heropy')
-
-Heropy.normal()
-Heropy.arrow()
-
-
-
-const timer = {
-  name : 'Heropy!!',
-  timeout : function(){
-    //setTimeout(함수, 시간)
-    setTimeout( ()=>{
-      console.log(this.name)
-    },2000)
+class User {
+  constructor(first, last){
+    this.firstName = first
+    this.lastName = last
+  }
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`
   }
 }
-timer.timeout()
+
+const heropys = new User('Heropy', 'Park')
+
+console.log(heropys)
