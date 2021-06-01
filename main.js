@@ -1,20 +1,17 @@
-//형 변환
-
-const a= 1
-const b ='1'
-
-console.log(a === b) // ===일치 연산자 ==동등 연산자
-console.log(a==b)
-
-//Truthy (참 같은 값)
-// true , {}, [], 1,2,'false', -12, '3.14'
-
-//Falsy(거짓 같은 값)
-// false, '', null, undefined, 0, -0, NaN
-
-if(true){
-  console.log(123)
+function sum(x,y){
+  return x + y
 }
-if(''){
-  console.log(123)
+
+const a = sum(1,3)
+const b = sum(4,12)
+
+console.log(a)
+console.log(b)
+
+// console.log(sum(1,2)) 함수의 호출 횟수를 최대한 줄이는게 좋다.
+
+function fx(){
+  console.log(arguments)
+  return arguments[0] + arguments[1]
 }
+console.log(fx(7,3))
