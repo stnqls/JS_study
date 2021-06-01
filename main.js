@@ -1,17 +1,22 @@
-import _, { uniqBy } from 'lodash'  //From `node_modules`
+// JSON 자바스크립트의 객체 표기법
 
-const users = [
-  {userId : '1', name : 'HEROPY'},
-  {userId : '2', name : 'Neo'},
-  {userId : '3', name : 'Amy'},
-  {userId : '4', name : 'Evan'},
-  {userId : '5', name : 'Lewis'}
-]
+import myData from './myData.json'
 
-const foundUser = _.find(users,{name : 'Amy'})
-const foundUserIndex = _.findIndex(users, {name : 'Amy'})
-console.log(foundUser)
-console.log(foundUserIndex)
+console.log(myData)
 
-_.remove(users, {name:'HEROPY'})
-console.log(users)
+const user = {
+  name : 'HEROPY',
+  age : 85,
+  emails : [
+    "thesecon@gmail.com",
+    'neo@zillinks.com'
+  ]
+}
+console.log('user',user)
+
+const str = JSON.stringify(user) //JSON 포맷인 문자데이터로 변환해준다.
+console.log('str',str)
+console.log(typeof str)
+
+const obj = JSON.parse(str)
+console.log('obj', obj)
