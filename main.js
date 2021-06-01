@@ -1,27 +1,19 @@
-class Vehicle {
-  constructor(name, wheel){
-    this.name = name
-    this.wheel = wheel
-  }
-}
-const myVehicle = new Vehicle('운송수단',2)
-console.log(myVehicle)
+const str = '0123'
 
-class Bicycle extends Vehicle {
-  constructor(name, wheel){
-    super(name,wheel)
-  }
-}
-const MyBicycle = new Bicycle('자전거',2)
-console.log(MyBicycle)
+console.log(str.length)
+// = console.log('01 23'.length)
 
-class Car extends Vehicle {
-  constructor(name, wheel, license) {
-    super(name, wheel)
-    this.license = license
-  }
-}
-const MyCar = new Car('자동차',4,true)
-const daughterCar = new Car ('포르쉐',4, false)
-console.log(MyCar)
-console.log(daughterCar)
+const str2 = 'Hello world!'
+
+console.log(str2.indexOf('HEROPY') !== -1)
+
+console.log(str2.slice(0,3))
+
+console.log(str2.replace(' world!',''))
+
+const str3 = 'stnqls3938@gmail.com'
+
+console.log(str3.match(/.+(?=@)/)[0]) //정규표현식
+
+const str4 = '    Hello world   '
+console.log(str4.trim()) //공백 제거
