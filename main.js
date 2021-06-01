@@ -4,7 +4,7 @@
    age : 85,
    emails : ['thesecon@gmail.com']
  }
- const copyUser = user
+ const copyUser = Object.assign({}, user) //복사
  console.log(copyUser === user)
 
  user.age = 22
