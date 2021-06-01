@@ -1,17 +1,13 @@
-function sum(x,y){
-  return x + y
+//화살표 함수
+// () => {} vs function(){}
+
+const double = function (x) {
+  return x * 2
 }
 
-const a = sum(1,3)
-const b = sum(4,12)
+console.log('double:', double(7))
 
-console.log(a)
-console.log(b)
-
-// console.log(sum(1,2)) 함수의 호출 횟수를 최대한 줄이는게 좋다.
-
-function fx(){
-  console.log(arguments)
-  return arguments[0] + arguments[1]
+const doubleArrow = (x) => {
+  return x *2
 }
-console.log(fx(7,3))
+console.log('doubleArrow', doubleArrow(7))
