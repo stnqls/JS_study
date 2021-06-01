@@ -1,19 +1,29 @@
-const str = '0123'
+const pi = 3.14159265358979
+console.log(pi)
 
-console.log(str.length)
-// = console.log('01 23'.length)
+const str = pi.toFixed(2) //소수점 이하 자릿수
+console.log(str)
+console.log(typeof str)
 
-const str2 = 'Hello world!'
+const integer = parseInt(str) //문자 데이터를 정수로 변환
+const float = parseFloat(str) //문자 데이터를 실수로 변환
+console.log(integer)
+console.log(float)
+console.log(typeof integer, typeof float)
 
-console.log(str2.indexOf('HEROPY') !== -1)
 
-console.log(str2.slice(0,3))
+// Math
 
-console.log(str2.replace(' world!',''))
+console.log('abs: ', Math.abs(-12))
 
-const str3 = 'stnqls3938@gmail.com'
+console.log('min: ', Math.min(2,8))
 
-console.log(str3.match(/.+(?=@)/)[0]) //정규표현식
+console.log('max: ', Math.max(2,8))
 
-const str4 = '    Hello world   '
-console.log(str4.trim()) //공백 제거
+console.log('ceil: ', Math.ceil(3.14)) //정수단위로 올림
+
+console.log('floor: ', Math.floor(3.14))
+
+console.log('round: ', Math.round(3.14)) //반올림
+
+console.log('random: ', Math.random()) 
