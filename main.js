@@ -1,9 +1,3 @@
-// JSON 자바스크립트의 객체 표기법
-
-import myData from './myData.json'
-
-console.log(myData)
-
 const user = {
   name : 'HEROPY',
   age : 85,
@@ -12,11 +6,10 @@ const user = {
     'neo@zillinks.com'
   ]
 }
-console.log('user',user)
 
-const str = JSON.stringify(user) //JSON 포맷인 문자데이터로 변환해준다.
-console.log('str',str)
-console.log(typeof str)
+// localStorage.setItem('user',user) 문자데이터로 변환해서 저장해야한다.
+localStorage.setItem('user',JSON.stringify(user))
 
-const obj = JSON.parse(str)
-console.log('obj', obj)
+console.log(JSON.parse(localStorage.getItem('user')))
+
+// localStorage.removeItem('user')
