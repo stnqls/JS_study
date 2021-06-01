@@ -7,9 +7,10 @@ const user = {
   ]
 }
 
-// localStorage.setItem('user',user) 문자데이터로 변환해서 저장해야한다.
-localStorage.setItem('user',JSON.stringify(user))
+const str = localStorage.getItem('user')
+const obj = JSON.parse(str)
 
-console.log(JSON.parse(localStorage.getItem('user')))
+obj.age = 22
+console.log(obj)
 
-// localStorage.removeItem('user')
+localStorage.setItem('user', JSON.stringify(obj))
