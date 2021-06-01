@@ -1,23 +1,12 @@
-import _ from 'lodash'
+import _ from 'lodash'  //From `node_modules`
+import getType from './getType' //기본모듈
+import {random,user as heropy} from './getRandom' //이름이 있는 모듈
+// import  as R from './getRandom'
+// * 로 한번에 내보낼 수 있다.
 
-// 얕은 복사
- const user = {
-   name : 'Heropy',
-   age : 85,
-   emails : ['thesecon@gmail.com']
- }
- const copyUser = _.cloneDeep(user) //깊은복제
- console.log(copyUser === user)
+console.log(_.camelCase('the hello world'))
+console.log(getType([1, 2, 3]))
+console.log(random(), random())
+console.log(heropy)
 
- user.age = 22
- console.log('user',user)
- console.log('copyUser', copyUser)
-
- console.log('------')
- console.log('------')
-
- //갚은 복사
- user.emails.push('neo@zillinks.com')
- console.log(user.emails === copyUser.emails)
- console.log('user', user)
- console.log('copyUser', copyUser)
+// console.log(R)
