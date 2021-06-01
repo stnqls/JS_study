@@ -1,16 +1,12 @@
-//반복문
-// for(시작조건; 종료조건; 변화조건)
+// 변수 유효범위
+// var let const
 
-const ulEl = document.querySelector('ul')
-
-for(let i = 0; i < 10; i += 1){
-  const li = document.createElement('li')
-  li.textContent=`list - ${i + 1} `
-  if((i + 1) % 2 == 0){
-    li.addEventListener('click', function(){
-      console.log(li.textContent)
-    })
+function scope(){
+  if(true){
+    const a = 123
+    console.log(a)
   }
-  ulEl.appendChild(li)
 }
-
+scope()
+// let, const는 블록 레벨을 갖는다.
+// var는 함수범위의 유효범위를 갖는다.
