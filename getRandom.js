@@ -6,5 +6,4 @@ export const user = {
   name:'HEROPY',
   age : 85
 }
-
 export default 123
