@@ -1,10 +1,12 @@
+import _ from 'lodash'
+
 // 얕은 복사
  const user = {
    name : 'Heropy',
    age : 85,
    emails : ['thesecon@gmail.com']
  }
- const copyUser = {...user}
+ const copyUser = _.cloneDeep(user) //깊은복제
  console.log(copyUser === user)
 
  user.age = 22
