@@ -1,13 +1,19 @@
-//화살표 함수
-// () => {} vs function(){}
+//즉시 실행 함수 IIFE
 
-const double = function (x) {
-  return x * 2
+const a = 7
+function double(){
+  console.log(a * 2)
 }
+double();
 
-console.log('double:', double(7))
+//첫번째 방법
+(
+  function () {
+    console.log(a * 2)
+  })();
+// 두번째 방법  
+(
+  function () {
+    console.log(a * 2)
+  }());
 
-const doubleArrow = (x) => {
-  return x *2
-}
-console.log('doubleArrow', doubleArrow(7))
