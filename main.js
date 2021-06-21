@@ -1,19 +1,34 @@
 //배열 내장함수
-// for-each
-const superheroes= ['아이언맨','캡틴아메리카','토르','닥터 스트레인지'];
+// map
+const array = [1,2,3,4,5,6,7,8];
 
-// for반복문사용
-// for (let i =0; i < superheroes.length ; i++) {
-//   console.log(superheroes[i]);
+//const squared = [];
+
+// 반복문으로 사용한 방법
+// for (let i =0; i < array.length; i++){
+//   squared.push(array[i] * array[i]);
 // }
 
-function print(hero) {
-  console.log(hero);
-}
+// forEach 사용하기
+// array.forEach(n => {
+//   squared.push(n*n);
+// })
 
-superheroes.forEach(print);
+const square = n => n*n;
+const squared = array.map(square);
 
-// 더 간단하게 만들기
-superheroes.forEach(function(hero) {
-  console.log(hero);
-});
+console.log(squared);
+
+const items = [
+  {
+    id :1,
+    text: 'hello'
+  },
+  {
+    id :2,
+    text: 'bye'
+  }
+];
+
+const texts = items.map(item => item.text);
+console.log(texts);
