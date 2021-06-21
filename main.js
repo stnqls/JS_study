@@ -1,12 +1,5 @@
 //배열 내장함수
-// indexOf
-
-const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
-const index = superheroes.indexOf('토르');
-console.log(index);
-
-
-//findIndex
+// filter : 특정조건을 만족하도록 새로운 배열을 만든다.
 
 const todos = [
   {
@@ -31,6 +24,5 @@ const todos = [
   }
 ]
 
- const number = todos.findIndex(todo => todo.id ===3);
- // const number = todos.find(todo => todo.id === 3); 객체 정보가 나타난다.
- console.log(number);
+const tasksNotDone = todos.filter(todo => todo.done === false);
+console.log(tasksNotDone);
