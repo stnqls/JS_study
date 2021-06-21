@@ -1,34 +1,36 @@
 //배열 내장함수
-// map
-const array = [1,2,3,4,5,6,7,8];
+// indexOf
 
-//const squared = [];
+const superheroes = ['아이언맨', '캡틴 아메리카', '토르', '닥터 스트레인지'];
+const index = superheroes.indexOf('토르');
+console.log(index);
 
-// 반복문으로 사용한 방법
-// for (let i =0; i < array.length; i++){
-//   squared.push(array[i] * array[i]);
-// }
 
-// forEach 사용하기
-// array.forEach(n => {
-//   squared.push(n*n);
-// })
+//findIndex
 
-const square = n => n*n;
-const squared = array.map(square);
-
-console.log(squared);
-
-const items = [
+const todos = [
   {
-    id :1,
-    text: 'hello'
+    id: 1,
+    text: '자바스크립트 입문',
+    done: true,
   },
   {
-    id :2,
-    text: 'bye'
+    id: 2,
+    text: '함수 배우기',
+    done: true,  
+  },
+  {
+    id: 3,
+    text: '객체와 배열 배우기',
+    done: true,
+  },
+  {
+    id: 4,
+    text: '배열 내장함수 배우기',
+    done: false,
   }
-];
+]
 
-const texts = items.map(item => item.text);
-console.log(texts);
+ const number = todos.findIndex(todo => todo.id ===3);
+ // const number = todos.find(todo => todo.id === 3); 객체 정보가 나타난다.
+ console.log(number);
