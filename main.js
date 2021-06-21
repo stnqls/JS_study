@@ -1,16 +1,14 @@
-const user = {
-  name : 'HEROPY',
-  age : 85,
-  emails : [
-    "thesecon@gmail.com",
-    'neo@zillinks.com'
-  ]
+import axios from 'axios'
+
+function fetchMovies(){
+  axios
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen') //요청
+    .then((res)=>{
+      console.log(res)
+      const h1El = document.querySelector('h1')
+      const imgEl = document.querySelector('img')
+      h1El.textContent = res.data.Search[0].Title
+      imgEl.src = res.data.Search[0].Poster
+    })
 }
-
-const str = localStorage.getItem('user')
-const obj = JSON.parse(str)
-
-obj.age = 22
-console.log(obj)
-
-localStorage.setItem('user', JSON.stringify(obj))
+fetchMovies()
