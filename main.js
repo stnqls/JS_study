@@ -1,28 +1,15 @@
 //배열 내장함수
-// filter : 특정조건을 만족하도록 새로운 배열을 만든다.
 
-const todos = [
-  {
-    id: 1,
-    text: '자바스크립트 입문',
-    done: true,
-  },
-  {
-    id: 2,
-    text: '함수 배우기',
-    done: true,  
-  },
-  {
-    id: 3,
-    text: '객체와 배열 배우기',
-    done: true,
-  },
-  {
-    id: 4,
-    text: '배열 내장함수 배우기',
-    done: false,
-  }
-]
+const numbers = [10,20,30,40];
 
-const tasksNotDone = todos.filter(todo => todo.done === false);
-console.log(tasksNotDone);
+//slice 원본 배열을 바꾸지 않는다.
+const sliced = numbers.slice(0,2);
+console.log(sliced); // 10,20
+console.log(numbers); // 10,20,30,40
+
+// splice: 특정항목을 제거할때 사용한다. 원본이 변한다.
+const index = numbers.indexOf(30);
+numbers.splice(index,1);
+console.log(numbers); // 10,20,40
+numbers.splice(index,2);
+console.log(numbers); // 10,20
