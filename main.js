@@ -1,14 +1,19 @@
-import axios from 'axios'
+//배열 내장함수
+// for-each
+const superheroes= ['아이언맨','캡틴아메리카','토르','닥터 스트레인지'];
 
-function fetchMovies(){
-  axios
-    .get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen') //요청
-    .then((res)=>{
-      console.log(res)
-      const h1El = document.querySelector('h1')
-      const imgEl = document.querySelector('img')
-      h1El.textContent = res.data.Search[0].Title
-      imgEl.src = res.data.Search[0].Poster
-    })
+// for반복문사용
+// for (let i =0; i < superheroes.length ; i++) {
+//   console.log(superheroes[i]);
+// }
+
+function print(hero) {
+  console.log(hero);
 }
-fetchMovies()
+
+superheroes.forEach(print);
+
+// 더 간단하게 만들기
+superheroes.forEach(function(hero) {
+  console.log(hero);
+});
