@@ -1,14 +1,26 @@
 //배열 내장함수
-// concat : 기존의 배열을 변화시키지 않고 새로운 배열을 생성한다.
+// reduce : 배열안에 있는 모든 값을 이용해서 연산을 한다.
 
-const arr = [1,2,3];
-const arr2 = [4,5,6];
+const numbers = [1, 2, 3, 4, 5];
 
-const concated = arr.concat(arr2);
-console.log(concated);
+const sum = numbers.reduce((accumulator, current) => accumulator + current , 0);
+console.log(sum); //15
 
-// join : 배열안의 값을 문자열로 바꿔준다.
-const array = [1,2,3,4,5];
-console.log(array.join()); //1,2,3,4,5
-console.log(array.join(' ')); // 1 2 3 4 5
-console.log(array.join(', ')) //1, 2, 3, 4, 5
+const avg = numbers.reduce((accumulator, current, index, array) => {
+  if (index === array.length -1) {
+    return (accumulator + current) / array.length;
+  }
+  return accumulator + current;
+},0 ); //0은 accumulator의 기본값이다.
+console.log(avg); //3
+
+const alphabets = ['a','a','a','b','c','c','d','e'];
+const counts = alphabets.reduce((acc,current) => {
+  if (acc[current]) {
+    acc[current] += 1;
+  }else {
+    acc[current] =1;
+  }
+  return acc;
+},{})
+console.log(counts); //{a: 3, b: 1, c: 2, d: 1, e: 1}
