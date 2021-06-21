@@ -1,19 +1,14 @@
 //배열 내장함수
+// concat : 기존의 배열을 변화시키지 않고 새로운 배열을 생성한다.
 
-const numbers = [10,20,30,40];
- 
-//shift : 원본을 변화시키며, 첫번째 원소를 추출한다.
-const value = numbers.shift();
-console.log(value); //10 
+const arr = [1,2,3];
+const arr2 = [4,5,6];
 
-//pop : 원본을 변화시키며, 마지막 원소를 추출한다.
-const value2 = numbers.pop();
-console.log(value2);
+const concated = arr.concat(arr2);
+console.log(concated);
 
-//unshift : 제일 첫번째 자리에 값을 추가한다.
-numbers.unshift(5);
-console.log(numbers); // 5,10,20,30,40
-
-//push : 제일 마지막 자리에 값을 추가한다.
-numbers.push(50);
-console.log(numbers) // 10,20,30,40,50
+// join : 배열안의 값을 문자열로 바꿔준다.
+const array = [1,2,3,4,5];
+console.log(array.join()); //1,2,3,4,5
+console.log(array.join(' ')); // 1 2 3 4 5
+console.log(array.join(', ')) //1, 2, 3, 4, 5
