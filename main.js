@@ -1,24 +1,18 @@
-class Food {
-  constructor(name) {
-    this.name= name;
-    this.brands = [];
-  }
-  addBrand(brand) {
-    this.brands.push(brand)
-  }
-  print() {
-    console.log(`${this.name}을 파는 음식점들:`);
-    console.log(this.brands.join(', '));
-  }
+// 삼항연산자 condition ? true : false
+
+const array =[];
+/*
+let text = '';
+if (array.length ===0) {
+  text = '배열이 비어있습니다.';
+}else {
+  text = '배열이 비어있지 않습니다.';
 }
+*/
+let text = array.length === 0 ? '배열이 비어있습니다.' : '배열이 비어있지 않습니다.';
+console.log(text);
 
-const pizza = new Food('피자');
-pizza.addBrand('피자헛');
-pizza.addBrand('도미노 피자');
-
-const chicken = new Food('치킨');
-chicken.addBrand('굽네치킨');
-chicken.addBrand('BBQ');
-
-pizza.print();
-chicken.print();
+const condition1 = false;
+const condition2 = false;
+const value = condition1 ? '와우!' : condition2 ? 'blabla' : 'foo'; //중첩해서 사용할 경우,if문이 더 좋다.
+console.log(value);
