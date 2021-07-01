@@ -1,32 +1,24 @@
-// 프로토타입과 클래스
-// ES6 class
-
-class Animal {
-  constructor(type, name, sound) { //constructor생성자라는 의미를 가지고 있다.
-    this.type = type;
-    this.name = name;
-    this.sound = sound;
+class Food {
+  constructor(name) {
+    this.name= name;
+    this.brands = [];
   }
-  say(){ //자동으로 prototype으로 변환해 준다.
-    console.log(this.sound);
+  addBrand(brand) {
+    this.brands.push(brand)
   }
-}
-
-// const dog = new Animal('개','멍멍이','멍멍');
-// const cat = new Animal('고양이','야옹이','야옹');
-
-class Dog extends Animal {
-  constructor(name,sound) {
-    super('개',name,sound);
-  }
-}
-class Cat extends Animal {
-  constructor(name,sound) {
-    super('고양이',name,sound);
+  print() {
+    console.log(`${this.name}을 파는 음식점들:`);
+    console.log(this.brands.join(', '));
   }
 }
 
-const dog = new Dog('멍멍이','멍멍');
-const cat = new Cat('야옹이','야옹');
-dog.say();
-cat.say();
+const pizza = new Food('피자');
+pizza.addBrand('피자헛');
+pizza.addBrand('도미노 피자');
+
+const chicken = new Food('치킨');
+chicken.addBrand('굽네치킨');
+chicken.addBrand('BBQ');
+
+pizza.print();
+chicken.print();
