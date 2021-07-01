@@ -1,15 +1,71 @@
-// 함수 파라미터
+// 조건문
 
-function calculateCircleArea(r) {
-  const radius = r || 1; //r이 정해지지 않았을 경우 기본값으로 1을 사용한다.
-  return Math.PI *radius * radius;
-}
-// 1. 파라미터 기본값으로 설정하기
-function calculateCircleArea(r = 1) {
-  return Math.PI *r * r;
-}
-// 2. 화살표 함수로 만들기
-const calculateCircleArea = (r = 1) => Math.PI * r * r;
+function isAnimal(text) {
+  const animals = ['고양이','개','거북이','너구리'];
+  return animals.includes(text);
+  //return text ==='고양이' || text === '개' || text ==='거북이' | text === '너구리'
+};
+//화살표 함수
+const isAnimal2 = (text) => ['고양이','개','거북이','너구리'].includes(text);
 
-const area = calculateCircleArea();
-console.log(area);
+console.log(isAnimal('개'));
+console.log(isAnimal('노트북'));
+
+function getSound(animal) {
+
+  const tasks = {
+    개 : () => {
+      console.log('멍멍!');
+    },
+    고양이 () {
+      console.log('야옹~');
+    },
+    비둘기: function() {
+      console.log('구구구구구');
+    }
+  }
+  const task = tasks[animal]
+  if (!task) {
+    console.log('....?');
+    return;
+  }
+  task();
+
+  /*
+  const sounds = {
+    개 : '멍멍!',
+    고양이 : '야옹~',
+    참새 : '짹쨱',
+    비둘기 : '구구구구구'
+  };
+  return sounds[animal] || '....?'; */
+
+  /* switch문으로 작성
+  switch (animal) {
+    case '개' : 
+      return '멍멍!';
+    case '고양이' : 
+      return '야옹~';
+    case '참새' : 
+      return '짹짹';
+    case '비둘기' : 
+      return '구구구구구';
+    default:
+      return '....?'
+  } */
+
+  /* if문으로 작성
+  if(animal === '개') return '멍멍!';
+  if(animal === '고양이') return '야옹~';
+  if(animal === '참새') return '짹짹';
+  if(animal === '비둘기') return '구구구구구';
+  return '...?'; */
+}
+
+/*
+console.log(getSound('개'));
+console.log(getSound('인간'));
+*/
+
+getSound('개');
+getSound('인간');
