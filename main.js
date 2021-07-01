@@ -1,71 +1,62 @@
-// 조건문
+// 비구조화 할당 (구조분해)
 
-function isAnimal(text) {
-  const animals = ['고양이','개','거북이','너구리'];
-  return animals.includes(text);
-  //return text ==='고양이' || text === '개' || text ==='거북이' | text === '너구리'
+//기본값 설정
+const object = {a: 1};
+const {a,b} = object;
+console.log(a); //1
+console.log(b); //undefined
+
+function print({ a, b = 2}) {
+  console.log(a); 
+  console.log(b); 
+}
+print(object); // 1, 2
+
+//이름바꾸기
+const animal = {
+  name :'멍멍이',
+  type :'개'
 };
-//화살표 함수
-const isAnimal2 = (text) => ['고양이','개','거북이','너구리'].includes(text);
+const {name: nickname} = animal; // = const nickname = animal.name;
+console.log(nickname);
 
-console.log(isAnimal('개'));
-console.log(isAnimal('노트북'));
+//배열 비구조화 할당, 기본값 설정
+const array = [1];
+const [one, two = 2] = array; //const one = array[0]; const two = array[1];
 
-function getSound(animal) {
+console.log(one);
+console.log(two);
 
-  const tasks = {
-    개 : () => {
-      console.log('멍멍!');
-    },
-    고양이 () {
-      console.log('야옹~');
-    },
-    비둘기: function() {
-      console.log('구구구구구');
+//객체의 깊은 값꺼내기
+const deepObject = {
+  state: {
+    information: {
+      name: 'subin',
+      languages: ['korean','english','chinese']
     }
-  }
-  const task = tasks[animal]
-  if (!task) {
-    console.log('....?');
-    return;
-  }
-  task();
-
-  /*
-  const sounds = {
-    개 : '멍멍!',
-    고양이 : '야옹~',
-    참새 : '짹쨱',
-    비둘기 : '구구구구구'
-  };
-  return sounds[animal] || '....?'; */
-
-  /* switch문으로 작성
-  switch (animal) {
-    case '개' : 
-      return '멍멍!';
-    case '고양이' : 
-      return '야옹~';
-    case '참새' : 
-      return '짹짹';
-    case '비둘기' : 
-      return '구구구구구';
-    default:
-      return '....?'
-  } */
-
-  /* if문으로 작성
-  if(animal === '개') return '멍멍!';
-  if(animal === '고양이') return '야옹~';
-  if(animal === '참새') return '짹짹';
-  if(animal === '비둘기') return '구구구구구';
-  return '...?'; */
+  },
+  value: 5
 }
 
-/*
-console.log(getSound('개'));
-console.log(getSound('인간'));
-*/
+// 1. 비구조화 2번 사용하기
+const {name, languages} = deepObject.state.information;
+const {value} = deepObject;
 
-getSound('개');
-getSound('인간');
+//비구조화할당 1번 사용하기
+const {
+  state : {
+    information :{
+      name,
+      languages : [first, second]
+    }
+  },
+  value
+} = deepObject;
+
+const extracted = {
+  name, // name : name, languages : languages 키의 값이 이미 있는경우 값을 생략해서 사용 가능하다.
+  first,
+  second,
+  value
+};
+console.log(extracted);
