@@ -1,26 +1,22 @@
-//배열 내장함수
-// reduce : 배열안에 있는 모든 값을 이용해서 연산을 한다.
+// 프로토타입과 클래스
+// 객체 생성
 
-const numbers = [1, 2, 3, 4, 5];
+function Animal(type, name, sound) {
+  this.type = type;
+  this.name = name;
+  this.sound = sound;
 
-const sum = numbers.reduce((accumulator, current) => accumulator + current , 0);
-console.log(sum); //15
+ /* this.say= function () {
+    console.log(this.sound);
+  }*/
+}
 
-const avg = numbers.reduce((accumulator, current, index, array) => {
-  if (index === array.length -1) {
-    return (accumulator + current) / array.length;
-  }
-  return accumulator + current;
-},0 ); //0은 accumulator의 기본값이다.
-console.log(avg); //3
+Animal.prototype.say = function() { //공유할수 있는 값이나 함수를 prototype으로 설정한다.
+  console.log(this.sound);
+}
 
-const alphabets = ['a','a','a','b','c','c','d','e'];
-const counts = alphabets.reduce((acc,current) => {
-  if (acc[current]) {
-    acc[current] += 1;
-  }else {
-    acc[current] =1;
-  }
-  return acc;
-},{})
-console.log(counts); //{a: 3, b: 1, c: 2, d: 1, e: 1}
+const dog = new Animal('개','멍멍이','멍멍');
+const cat = new Animal('고양이','야옹이','야옹');
+
+dog.say();
+cat.say();
