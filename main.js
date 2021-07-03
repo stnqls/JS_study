@@ -1,30 +1,39 @@
-// spread연산자
-//기존 객체를 복사하고 추가적인 값을 입력할때 사용한다.
-
-const slime = {
-  name: '슬라임'
-}
-
-const cuteSlime = {
-  name: '슬라임',
-  attribute: 'cute'
-}
+// rest연산자
+//객체와 함수의 파라미터로 사용할 수 있다.
 
 const purpleCuteSlime = {
-  ...cuteSlime,
+  name: '슬라임',
+  attribute: 'cute',
   color: 'purple'
+};
+
+const { color, ...rest} = purpleCuteSlime;
+console.log(color); //purple
+console.log(rest); // name: 슬라임, attribute: cute
+
+const { attribute, ...slime } = rest;
+console.log(slime); // name: 슬라임
+
+//배열에서 사용하기
+//배열에서의 rest는 맨 마지막에 사용한다.
+
+const numbers = [0,1,2,3,4,5,6];
+
+const [one, ...rest2] = numbers;
+console.log(one); //0
+console.log(rest2); // 1,2,3,4,5,6
+
+//함수 파라미터에서 사용하기
+
+function sum (...rest3) {
+ return rest3.reduce((acc, current) => acc+current,0);
 }
+console.log(sum(1,2,3,4,5,6,7,8)); //36
 
-console.log(slime);
-console.log(cuteSlime);
-console.log(purpleCuteSlime);
+//함수 인자에서 사용하기
 
-const animals = ['개','고양이','참새'];
-const anotherAnimals = [...animals, '비둘기'] // = animals.concat('비둘기');와 같다.
-
-console.log(animals); //개, 고양이, 참새
-console.log(anotherAnimals); // 개, 고양이, 참새, 비둘기
-
-const numbers = [1,2,3,4,5];
-const spreadNumbers = [...numbers, 1000, ...numbers];
-console.log(spreadNumbers); // 1, 2, 3, 4, 5, 1000, 1, 2, 3, 4, 5
+function mul(...rest4) {
+  return rest4.reduce((acc, current) => acc*current,1);
+}
+const numbers2 = [1,2,3,4,5,6,7,8];
+console.log(mul(...numbers2)); //40320
