@@ -1,39 +1,40 @@
-// rest연산자
-//객체와 함수의 파라미터로 사용할 수 있다.
+//scope
+// 변수, 함수를 사용할때 해당하는 범위
+//1. global : 전역범위, 코드의 모든 범위에서 사용가능하다.
+//2. function : 코드의 특정 함수 내부에서 사용가능하다.
+//3. block : if문 for문에 쓰이는 '{}' 안에서 사용 가능하다.
 
-const purpleCuteSlime = {
-  name: '슬라임',
-  attribute: 'cute',
-  color: 'purple'
-};
+const value = 'hello!'; //global
 
-const { color, ...rest} = purpleCuteSlime;
-console.log(color); //purple
-console.log(rest); // name: 슬라임, attribute: cute
-
-const { attribute, ...slime } = rest;
-console.log(slime); // name: 슬라임
-
-//배열에서 사용하기
-//배열에서의 rest는 맨 마지막에 사용한다.
-
-const numbers = [0,1,2,3,4,5,6];
-
-const [one, ...rest2] = numbers;
-console.log(one); //0
-console.log(rest2); // 1,2,3,4,5,6
-
-//함수 파라미터에서 사용하기
-
-function sum (...rest3) {
- return rest3.reduce((acc, current) => acc+current,0);
+function myFunction(){ 
+  console.log('myFunction: ');
+  console.log(value);
 }
-console.log(sum(1,2,3,4,5,6,7,8)); //36
 
-//함수 인자에서 사용하기
-
-function mul(...rest4) {
-  return rest4.reduce((acc, current) => acc*current,1);
+function otherFunction(){
+  console.log('otherFunction: ');
+  const value = 'bye!'; //function
+  console.log(value);
 }
-const numbers2 = [1,2,3,4,5,6,7,8];
-console.log(mul(...numbers2)); //40320
+
+myFunction();
+otherFunction();
+
+console.log('global scope: ');
+console.log(value);
+
+function yourFunction(){
+  const value = 'bye!';
+if(true) {
+  const value = 'world';
+  console.log('block scope : ');
+  console.log(value); //block
+}
+console.log('function scope: ');
+console.log(value);
+}
+
+yourFunction();
+console.log('global scope: ');
+console.log(value); // hello!
+console.log(anotherValue); // error
