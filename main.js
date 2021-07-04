@@ -1,10 +1,36 @@
-//Hoisting
-//함수 또는 변수(var)가 선언시 최 상단으로 끌어 올려지는 현상
-//const나 let은 호이스팅이 발생하지 않는다.
-// 호이스팅은 최대한 피해서 작성해야한다.
+//비동기 처리
+// Ajax Web API요청, 파일읽기, 암호화/복호화, 작업예약 에서 비동기를 사용한다.
 
-myFunction();
+//동기
+function workSync() {
+  const start = Date.now();
+  for(let i = 0; i< 1000000000; i++) {
 
-function myFunction (){
-  console.log('hello world');
+  }
+  const end = Date.now();
+  console.log(end-start + 'ms');
 }
+
+workSync();
+console.log('다음작업')
+
+//비동기
+function workAsycn(callback) {
+  setTimeout(() => {
+    const start = Date.now();
+    for(let i = 0; i< 1000000000; i++) {
+  
+    }
+    const end = Date.now();
+    console.log(end-start + 'ms');
+    callback(end-start)
+  },0)
+}
+
+console.log('작업시작!');
+workAsycn((ms) => {
+  console.log('작업이 끝났습니다.');
+  console.log(ms + 'ms 걸렸습니다.');
+});
+console.log('다음작업!');
+// 작업시작! 다음작업! 574ms 작업이 끝났습니다. 558ms걸렸습니다.
