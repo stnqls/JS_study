@@ -1,36 +1,88 @@
-//비동기 처리
-// Ajax Web API요청, 파일읽기, 암호화/복호화, 작업예약 에서 비동기를 사용한다.
+//promise
+// 에러의 위치를 파악하기 어렵다, 특정 위치에서 조건을 걸기가 어렵다(then으로 이어지기때문에)
+// 단점을 보안하기 위해 async,await를 사용한다.
 
-//동기
-function workSync() {
-  const start = Date.now();
-  for(let i = 0; i< 1000000000; i++) {
-
-  }
-  const end = Date.now();
-  console.log(end-start + 'ms');
-}
-
-workSync();
-console.log('다음작업')
-
-//비동기
-function workAsycn(callback) {
+function increaseAndPrint1(n, callback) {
   setTimeout(() => {
-    const start = Date.now();
-    for(let i = 0; i< 1000000000; i++) {
-  
+    const increased = n + 1;
+    console.log(increased);
+    if( callback) {
+      callback(increased);
     }
-    const end = Date.now();
-    console.log(end-start + 'ms');
-    callback(end-start)
-  },0)
+  },1000)
+}
+increaseAndPrint1(0, n => {
+  increaseAndPrint1(n, n => {
+    increaseAndPrint1(n, n => {
+      increaseAndPrint1(n, n => {
+        increaseAndPrint1(n,n => {
+          console.log('작업끝!')
+        })
+      })
+    })
+  })
+})
+
+//promise사용하기
+//성공 - resolve
+ const myPromiseResolve = new Promise((resolve, reject) => {
+   setTimeout(() => {
+     resolve('result');
+   },1000)
+ });
+
+ myPromiseResolve.then(result => {
+   console.log(result);
+ })
+//실패 - reject
+ const myPromiseReject = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error());
+  },1000)
+});
+
+myPromiseReject.then(result => {
+  console.log(result);
+}).catch(e => {
+  console.error(e);
+})
+
+function increaseAndPrint2(n){
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      const value = n +1;
+      if(value ===5) {
+        const error = new Error();
+        error.name = 'ValueIsFiveError';
+        reject(error);
+        return;
+      }
+      console.log(value);
+      resolve(value);
+    },1000);
+  });
 }
 
-console.log('작업시작!');
-workAsycn((ms) => {
-  console.log('작업이 끝났습니다.');
-  console.log(ms + 'ms 걸렸습니다.');
-});
-console.log('다음작업!');
-// 작업시작! 다음작업! 574ms 작업이 끝났습니다. 558ms걸렸습니다.
+increaseAndPrint2(0).then(n => {
+  return increaseAndPrint2(n);
+}).then(n => {
+  return increaseAndPrint2(n);
+}).then(n => {
+  return increaseAndPrint2(n);
+}).then(n => {
+  return increaseAndPrint2(n);
+}).then(n => {
+  return increaseAndPrint2(n);
+}).catch(e => {
+  console.error(e);
+})
+/*위와 같은 코드
+increaseAndPrint2(0).then(increaseAndPrint2)
+.then(increaseAndPrint2)
+.then(increaseAndPrint2)
+.then(increaseAndPrint2)
+.then(increaseAndPrint2)
+.catch(e => {
+  console.error(e);
+})
+*/
