@@ -1,35 +1,48 @@
-// async / await
+// promise all, promise race
 
 function sleep(ms) {
-  return new Promise(resolve => 
-    setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function process() {
-  console.log('안녕하세요!');
+const getDog = async () => {
   await sleep(1000);
-  console.log('반갑습니다!');
-  return true; // 함수의 결과는 promise를 반환하게 된다.
+  return '멍멍이';
 }
 
-process().then(value => {
-  console.log(value);
-})
-//결과 : 안녕하세요! 반갑습니다! true
-
-async function makeError(){
-  await sleep(1000);
-  const error = new Error();
-  error.name = 'make Error';
-  throw error;
+const getRabbit = async () => {
+  await sleep(500);
+  return '토끼';
 }
 
-async function process2() {
-  try {
-    await makeError();
-  } catch (e) {
-    console.error(e);
-  }
+const getTurtle = async () => {
+  await sleep(3000);
+  return '거북이';
+}
+
+// all : 요소중 1개라도 오류가 발생하면 오류가 발생한다.
+async function process (){
+  const results = await Promise.all([getDog(), getRabbit(), getTurtle()]);
+  console.log(results);
+  // const dog = await getDog();
+  // console.log(dog);
+  // const rabbit = await getRabbit();
+  // console.log(rabbit);
+  // const turtle = await getTurtle();
+  // console.log(turtle);
+  
+  //각 각의 객체 요소 꺼내기
+  const [dog, rabbit, turtle] = await Promise.all([getDog(), getRabbit(), getTurtle()]);
+  console.log(dog);
+  console.log(rabbit);
+  console.log(turtle);
+}
+process();
+
+// race : 가장 빨리 끝난 함수가 반환된다. 가장빨리 끝난 요소가 에러일 경우에만 판별이 가능하다.
+async function process2 (){
+  
+  const first = await Promise.race([getDog(), getRabbit(), getTurtle()]);
+  console.log(first);
 }
 
 process2();
